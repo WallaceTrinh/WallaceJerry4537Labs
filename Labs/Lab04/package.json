@@ -2,12 +2,11 @@
     "name": "wallace-jerry4537-labs-lab04",
     "version": "1.0.0",
     "main": "server2/app.js",
-    "engines": {
-        "node": "18.x"
-    },
     "scripts": {
-        "start": "node server2/app.js"
+      "start": "node server2/app.js"
+    },
+    "engines": {
+      "node": "18.x"
     }
-    
-
-}
+  }
+  

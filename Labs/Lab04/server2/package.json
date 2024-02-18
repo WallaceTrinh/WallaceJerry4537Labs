@@ -6,6 +6,7 @@
         "node": "18.x"
     },
     "scripts": {
-        "start": "node server2/app.js"
+        "start": "node app.js"
     }
+    
 }

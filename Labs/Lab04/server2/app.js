@@ -58,24 +58,6 @@ class DictionaryServer {
         res.end(JSON.stringify({ error: 'Not Found' }));
     }
 
-    // To help with reading and writing in search.html and store.html
-    serveStaticFile(filePath, res) {
-        // Constructs the full path to the file
-        const fullPath = path.join(__dirname, '../', filePath);
-        // Read the file from the filesystem
-        fs.readFile(fullPath, (err, data) => {
-            if (err) {
-                // If an error occurs, respond with error status code
-                res.writeHead(500);
-                res.end("Error loading file");
-                return;
-            }
-            // Success, responds with the file content
-            res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end(data);
-        });
-    }
-
     // Handles POST requests to add a new word and definition
     handlePostRequest(req, res) {
         this.totalRequests++;
@@ -92,7 +74,7 @@ class DictionaryServer {
             // Checks if it is a valid input
             if (!word || !definition || typeof word !== 'string' || typeof definition !== 'string') {
                 res.writeHead(400, { 'Content-Type': 'application/json' });
-                res.end(JSON.stringify({ error: 'Invalid input! The word and definition must be non-empty strings.' }));
+                res.end(JSON.stringify({ error: 'Invalid input. Word and definition must be non-empty strings.' }));
                 return;
             }
 

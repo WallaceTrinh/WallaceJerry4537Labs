@@ -3,25 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Add New Definition</title>
-    <!-- Add our Style or link to CSS here -->
 </head>
 <body>
-    <h1>Add New Definition</h1>
+    <h1>Add a New Word Definition</h1>
+    <input type="text" id="word" placeholder="Word">
+    <textarea id="definition" placeholder="Definition"></textarea>
+    <button onclick="addDefinition()">Add Definition</button>
+    <div id="message"></div>
 
-    <form id="definitionForm">
-        <label for="word">Word:</label>
-        <input type="text" id="word" name="word" required>
-        <br><br>
-        <label for="definition">Definition: </label>
-        <textarea id="definition" name="definition" rows="4" required></textarea>
-        <br>
-        <button type="button" onclick="submitDefinition()">Submit</button>
-    </form>
-
-    <div id="feedback"></div>
-
-    <script>
-        // We need to add the JavaScript for AJAX call to GET the definition of the word HERE BOY
-    </script>
+    <script src="store.js"></script>
 </body>
 </html>
+

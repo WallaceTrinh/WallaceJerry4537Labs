@@ -3,22 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Search Definitions</title>
-    <!-- Add our Style or link to CSS here -->
 </head>
 <body>
-    <h1>Search Definitions</h1>
+    <h1>Search for a Word Definition</h1>
+    <input type="text" id="searchWord" placeholder="Word to search">
+    <button onclick="searchDefinition()">Search</button>
+    <div id="result"></div>
 
-    <form id="searchForm">
-        <label for="searchWord">Word: </label>
-        <input type="text" id="searchWord" name="searchWord" required>
-        <button type="button" onclick="searchDefinition()">Search</button>
-    </form>
-
-    <div id="results"></div>
-
-    <script>
-        // We need to add the JavaScript for AJAX call to GET the definition of the word HERE BOY
-    </script>
+    <script src="search.js"></script>
 </body>
 </html>
 

@@ -141,5 +141,5 @@ class DictionaryServer {
 }
 
 const dictionaryServer = new DictionaryServer();
-dictionaryServer.start(process.env.PORT || 8888);
+dictionaryServer.start(process.env.PORT || 8080);
 

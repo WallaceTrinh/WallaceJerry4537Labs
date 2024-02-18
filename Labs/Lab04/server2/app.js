@@ -24,7 +24,7 @@ class DictionaryServer {
         // Set CORS headers
         res.setHeader('Access-Control-Allow-Origin', '*');
         // HTTP methods, used for CORS request
-        res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS'); 
+        res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
         // Headers for CORS
         res.setHeader('Access-Control-Allow-Headers', 'Content-Type, requestNumber');
         // Allow credentials to be sent with requests (cookies)
@@ -141,4 +141,5 @@ class DictionaryServer {
 }
 
 const dictionaryServer = new DictionaryServer();
-dictionaryServer.start(8888);
+dictionaryServer.start(process.env.PORT || 8888);
+

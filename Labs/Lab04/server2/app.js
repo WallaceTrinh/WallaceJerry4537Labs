@@ -1,6 +1,8 @@
 // Importing Node.js modules
 const http = require('http');
 const url = require('url');
+const fs = require('fs'); // File system module for reading files
+const path = require('path'); // Path module for working with file and directory paths
 
 // A class for the dictionary server
 class DictionaryServer {
@@ -41,19 +43,51 @@ class DictionaryServer {
         const parsedUrl = url.parse(req.url, true);
         const pathname = parsedUrl.pathname;
 
+        // To work with store.html
+        if (pathname === '/' || pathname === '/store.html') {
+            this.serveStaticFile('server1/store.html', res);
+            return;
+        }
+
+        // To work with search.html
+        if (pathname === '/search.html') {
+            this.serveStaticFile('server1/search.html', res);
+            return;
+        }
+
         // Handle POST requests to add a new definition
         if (req.method === 'POST' && pathname === '/api/definitions/') {
             this.handlePostRequest(req, res);
+            return;
         }
-        // Handle GET Requests to serach for a word's definition
-        else if (req.method === 'GET' && pathname === '/api/definitions/') {
+
+        // Handle GET Requests to search for a word's definition
+        if (req.method === 'GET' && pathname === '/api/definitions/') {
             this.handleGetRequest(parsedUrl.query, res);
+            return;
         }
-        // Responding to 404 error for other requests
-        else {
-            res.writeHead(404, { 'Content-Type': 'application/json' });
-            res.end(JSON.stringify({ error: 'Not Found' }));
-        }
+
+        // Responding with 404 error for any other routes that are not handled
+        res.writeHead(404, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Not Found' }));
+    }
+
+    // To help with reading and writing in search.html and store.html
+    serveStaticFile(filePath, res) {
+        // Constructs the full path to the file
+        const fullPath = path.join(__dirname, '../', filePath);
+        // Read the file from the filesystem
+        fs.readFile(fullPath, (err, data) => {
+            if (err) {
+                // If an error occurs, respond with error status code
+                res.writeHead(500);
+                res.end("Error loading file");
+                return;
+            }
+            // Success, responds with the file content
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.end(data);
+        });
     }
 
     // Handles POST requests to add a new word and definition

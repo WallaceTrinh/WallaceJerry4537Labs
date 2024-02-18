@@ -42,11 +42,11 @@ class DictionaryServer {
         const pathname = parsedUrl.pathname;
 
         // Testing endpoint
-        if (pathname === '/api/test') {
-            res.writeHead(200, { 'Content-Type': 'application/json' });
-            res.end(JSON.stringify({ message: 'Test endpoint reached' }));
-            return;
-        }
+        // if (pathname === '/api/test') {
+        //     res.writeHead(200, { 'Content-Type': 'application/json' });
+        //     res.end(JSON.stringify({ message: 'Test endpoint reached' }));
+        //     return;
+        // }
 
         // Handle POST requests to add a new definition
         if (req.method === 'POST' && pathname === '/api/definitions/') {
@@ -55,7 +55,7 @@ class DictionaryServer {
         }
 
         // Handle GET Requests to search for a word's definition
-        if (req.method === 'GET' && pathname.startsWith('/api/definitions/')) {
+        if (req.method === 'GET' && pathname === '/api/definitions/') {
             this.handleGetRequest(parsedUrl.query, res);
             return;
         }

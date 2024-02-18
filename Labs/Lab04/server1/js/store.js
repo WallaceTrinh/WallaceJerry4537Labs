@@ -2,7 +2,7 @@ function addDefinition() {
     const word = document.getElementById('word').value;
     const definition = document.getElementById('definition').value;
 
-    fetch('http://localhost:8888/api/definitions/', {
+    fetch('https://wallace-jerry4537-labs.vercel.app/api/definitions/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

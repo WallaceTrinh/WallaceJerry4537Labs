@@ -1,7 +1,7 @@
 function searchDefinition() {
     const word = document.getElementById('searchWord').value;
 
-    fetch(`http://localhost:8888/api/definitions/?word=${encodeURIComponent(word)}`, {
+    fetch(`https://wallace-jerry4537-labs.vercel.app/api/definitions/?word=${encodeURIComponent(word)}`, {
         method: 'GET',
     })
     .then(response => response.json())

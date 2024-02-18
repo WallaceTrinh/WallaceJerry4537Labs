@@ -7,22 +7,15 @@
       }
     ],
     "routes": [
-      {
-        "src": "./api/definitions/(.*)",
-        "dest": "/server2/app.js"
-      },
-      {
-        "src": "./search.html",
-        "dest": "/server1/search.html"
-      },
-      {
-        "src": "./store.html",
-        "dest": "/server1/store.html"
-      },
-      {
-        "src": "./(.*)",
-        "dest": "/server1/$1"
-      }
-    ]
+        {
+          "src": "/api/definitions/(.*)",
+          "dest": "/server2/app.js"
+        },
+        {
+          "src": "/(.*)",
+          "dest": "/server1/$1"
+        }
+      ]
+      
   }
   

@@ -1,8 +1,6 @@
 // Importing Node.js modules
 const http = require('http');
 const url = require('url');
-const fs = require('fs'); // File system module for reading files
-const path = require('path'); // Path module for working with file and directory paths
 
 // A class for the dictionary server
 class DictionaryServer {
@@ -42,18 +40,6 @@ class DictionaryServer {
         // Parsing the URL to work with a path name and query
         const parsedUrl = url.parse(req.url, true);
         const pathname = parsedUrl.pathname;
-
-        // To work with store.html
-        if (pathname === '/' || pathname === '/store.html') {
-            this.serveStaticFile('server1/store.html', res);
-            return;
-        }
-
-        // To work with search.html
-        if (pathname === '/search.html') {
-            this.serveStaticFile('server1/search.html', res);
-            return;
-        }
 
         // Handle POST requests to add a new definition
         if (req.method === 'POST' && pathname === '/api/definitions/') {

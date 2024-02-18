@@ -74,7 +74,7 @@ class DictionaryServer {
             // Checks if it is a valid input
             if (!word || !definition || typeof word !== 'string' || typeof definition !== 'string') {
                 res.writeHead(400, { 'Content-Type': 'application/json' });
-                res.end(JSON.stringify({ error: 'Invalid input! The word and definition must be non-empty strings.' }));
+                res.end(JSON.stringify({ error: 'Invalid input. Word and definition must be non-empty strings.' }));
                 return;
             }
 

@@ -8,19 +8,19 @@
     ],
     "routes": [
       {
-        "src": "/api/definitions/(.*)",
+        "src": "./api/definitions/(.*)",
         "dest": "/server2/app.js"
       },
       {
-        "src": "/search.html",
+        "src": "./search.html",
         "dest": "/server1/search.html"
       },
       {
-        "src": "/store.html",
+        "src": "./store.html",
         "dest": "/server1/store.html"
       },
       {
-        "src": "/(.*)",
+        "src": "./(.*)",
         "dest": "/server1/$1"
       }
     ]

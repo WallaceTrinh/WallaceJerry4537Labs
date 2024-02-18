@@ -42,13 +42,13 @@ class DictionaryServer {
         const pathname = parsedUrl.pathname;
 
         // Handle POST requests to add a new definition
-        if (req.method === 'POST' && pathname === '/api/definitions/') {
+        if (req.method === 'POST' && pathname === '/labs/lab04/server1/store/') {
             this.handlePostRequest(req, res);
             return;
         }
 
         // Handle GET Requests to search for a word's definition
-        if (req.method === 'GET' && pathname === '/api/definitions/') {
+        if (req.method === 'GET' && pathname === '/labs/lab04/server1/search/') {
             this.handleGetRequest(parsedUrl.query, res);
             return;
         }

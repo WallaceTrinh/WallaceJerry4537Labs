@@ -2,7 +2,7 @@ function addDefinition() {
     var xhr = new XMLHttpRequest();
     var word = document.getElementById('word').value;
     var definition = document.getElementById('definition').value;
-    xhr.open('POST', 'https://wallace-jerry4537-labs-lab04.vercel.app/', true);
+    xhr.open('POST', 'https://wallace-jerry4537-labs-lab04.vercel.app/api/definitions/', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
 
     xhr.onload = function() {

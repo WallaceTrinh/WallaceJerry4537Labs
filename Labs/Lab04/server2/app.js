@@ -98,7 +98,10 @@ class DictionaryServer {
             const totalEntries = Object.keys(this.dictionary).length;
 
             // Respond with success message, request count, and the total entries
-            res.writeHead(201, { 'Content-Type': 'application/json' });
+            // res.writeHead(201, { 'Content-Type': 'application/json' });
+            res.setHeader('Content-Type', 'application/json');;
+            res.statusCode(201);
+
             res.end(JSON.stringify({
                 message: 'Definition added successfully!',
                 requestNumber: this.totalRequests,
@@ -135,10 +138,15 @@ class DictionaryServer {
         }
 
         // Success if found, send a 200 OK response with word, definition and request number
-        res.writeHead(200, {
-            'Content-Type': 'application/json',
-            'Access-Control-Expose-Headers': 'requestNumber'
-        });
+        // res.writeHead(200, {
+        //     'Content-Type': 'application/json',
+        //     'Access-Control-Expose-Headers': 'requestNumber'
+        // });
+
+        res.setHeader('Content-Type', 'application/json');
+        res.setHeader('Access-Control-Expose-Headers', 'requestNumber');
+        res.statusCode(200);
+
         res.end(JSON.stringify({
             word,
             definition,

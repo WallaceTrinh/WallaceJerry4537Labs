@@ -24,7 +24,7 @@ class DictionaryServer {
         // Set CORS headers
         res.setHeader('Access-Control-Allow-Origin', '*');
         // HTTP methods, used for CORS request
-        res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS'); 
+        res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
         // Headers for CORS
         res.setHeader('Access-Control-Allow-Headers', 'Content-Type, requestNumber');
         // Allow credentials to be sent with requests (cookies)
@@ -40,6 +40,13 @@ class DictionaryServer {
         // Parsing the URL to work with a path name and query
         const parsedUrl = url.parse(req.url, true);
         const pathname = parsedUrl.pathname;
+
+        // Testing endpoint
+        // if (pathname === '/api/test') {
+        //     res.writeHead(200, { 'Content-Type': 'application/json' });
+        //     res.end(JSON.stringify({ message: 'Test endpoint reached' }));
+        //     return;
+        // }
 
         // Handle POST requests to add a new definition
         if (req.method === 'POST' && pathname === '/api/definitions/') {
@@ -141,4 +148,5 @@ class DictionaryServer {
 }
 
 const dictionaryServer = new DictionaryServer();
-dictionaryServer.start(8888);
+dictionaryServer.start(process.env.PORT || 8080);
+

@@ -1,7 +1,7 @@
 function searchDefinition() {
     var xhr = new XMLHttpRequest();
     var word = document.getElementById('searchWord').value;
-    xhr.open('GET', `https://wallace-jerry4537-labs-lab04.vercel.app/api/definitions/?word=${encodeURIComponent(word)}`, true);
+    xhr.open('GET', `https://jerry4537lab4.onrender.com/api/definitions/?word=${encodeURIComponent(word)}`, true);
 
     xhr.onload = function() {
         if (xhr.status >= 200 && xhr.status < 300) {

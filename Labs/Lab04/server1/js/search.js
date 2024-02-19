@@ -12,12 +12,12 @@ function searchDefinition() {
                 document.getElementById('result').innerText = `Definition: ${data.definition}`;
             }
         } else {
-            console.error('Request failed');
+            document.getElementById('result').innerText = 'Error: ' + data.error;
         }
     };
 
     xhr.onerror = function() {
-        console.error('Request error');
+        document.getElementById('result').innerText = 'Network error';
     };
 
     xhr.send();

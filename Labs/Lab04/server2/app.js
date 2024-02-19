@@ -32,7 +32,7 @@ class DictionaryServer {
 
         // Handle OPTIONS method CORS preflight requests
         if (req.method === 'OPTIONS') {
-            res.writeHead(200);
+            res.statusCode(200);
             res.end();
             return;
         }

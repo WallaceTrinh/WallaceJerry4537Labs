@@ -15,7 +15,7 @@ function searchDefinition() {
             }
         } else {
             // Display a custom error message to the user
-            document.getElementById('result').innerText = `An error occurred: ${xhr.statusText}`;
+            document.getElementById('result').innerText = `Word definition does not exist! ${xhr.statusText}`;
             console.error('Request failed');
         }
     };

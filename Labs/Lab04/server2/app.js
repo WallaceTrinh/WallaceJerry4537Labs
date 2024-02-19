@@ -32,9 +32,11 @@ class DictionaryServer {
 
         // Handle OPTIONS method CORS preflight requests
         if (req.method === 'OPTIONS') {
-            res.statusCode(200);
+            res.statusCode = 200;
             res.end();
             return;
+        } else {
+            res.setHeader('Content-Type', 'application/json')
         }
 
         // Parsing the URL to work with a path name and query
@@ -61,7 +63,9 @@ class DictionaryServer {
         }
 
         // Responding with 404 error for any other routes that are not handled
-        res.writeHead(404, { 'Content-Type': 'application/json' });
+        // res.writeHead(404, { 'Content-Type': 'application/json' });
+        // res.setHeader('Content-Type', 'application/json')
+        res.statusCode = 404;
         res.end(JSON.stringify({ error: 'Not Found' }));
     }
 
@@ -80,14 +84,20 @@ class DictionaryServer {
 
             // Checks if it is a valid input
             if (!word || !definition || typeof word !== 'string' || typeof definition !== 'string') {
-                res.writeHead(400, { 'Content-Type': 'application/json' });
+                // res.writeHead(400, { 'Content-Type': 'application/json' });
+                // res.setHeader('Content-Type', 'application/json')
+                res.statusCode = 400;
+
                 res.end(JSON.stringify({ error: 'Invalid input. Word and definition must be non-empty strings.' }));
                 return;
             }
 
             // Checks if the word exists in the dictionary
             if (this.dictionary[word]) {
-                res.writeHead(409, { 'Content-Type': 'application/json' });
+                // res.writeHead(409, { 'Content-Type': 'application/json' });
+
+                // res.setHeader('Content-Type', 'application/json')
+                res.statusCode = 409;
                 res.end(JSON.stringify({ message: `Warning! '${word}' already exists.` }));
                 return;
             }
@@ -100,7 +110,7 @@ class DictionaryServer {
             // Respond with success message, request count, and the total entries
             // res.writeHead(201, { 'Content-Type': 'application/json' });
             res.setHeader('Content-Type', 'application/json');;
-            res.statusCode(201);
+            res.statusCode = 201;
 
             res.end(JSON.stringify({
                 message: 'Definition added successfully!',
@@ -116,7 +126,10 @@ class DictionaryServer {
 
         // Validating the input if it is a string
         if (!word || typeof word !== 'string') {
-            res.writeHead(400, { 'Content-Type': 'application/json' });
+            // res.writeHead(400, { 'Content-Type': 'application/json' });
+
+            // res.setHeader('Content-Type', 'application/json')
+            res.statusCode = 400;
             res.end(JSON.stringify({ error: 'Invalid input. The word must be a non-empty string.' }));
             return;
         }
@@ -126,10 +139,14 @@ class DictionaryServer {
 
         // If the word isn't found, give 404 error
         if (!definition) {
-            res.writeHead(404, {
-                'Content-Type': 'application/json',
-                'Access-Control-Expose-Headers': 'requestNumber'
-            });
+            // res.writeHead(404, {
+            //     'Content-Type': 'application/json',
+            //     'Access-Control-Expose-Headers': 'requestNumber'
+            // });
+
+            res.setHeader('Access-Control-Expose-Headers', 'requestNumber')
+            res.statusCode = 404;
+
             res.end(JSON.stringify({
                 error: `Request# ${this.totalRequests}, Word '${word}' not found!`,
                 requestNumber: this.totalRequests
@@ -145,7 +162,7 @@ class DictionaryServer {
 
         res.setHeader('Content-Type', 'application/json');
         res.setHeader('Access-Control-Expose-Headers', 'requestNumber');
-        res.statusCode(200);
+        res.statusCode = 200;
 
         res.end(JSON.stringify({
             word,

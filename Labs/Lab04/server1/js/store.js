@@ -1,3 +1,4 @@
+// Function to add a definition to the a word.
 function addDefinition() {
     var xhr = new XMLHttpRequest();
     var word = document.getElementById('word').value;

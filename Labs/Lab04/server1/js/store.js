@@ -7,9 +7,9 @@ function addDefinition() {
     xhr.setRequestHeader('Content-Type', 'application/json');
 
     xhr.onload = function() {
-        if (xhr.status >= 200 && xhr.status < 300) {
+        if (xhr.status >= 200 && xhr.status < 400) {
             var data = JSON.parse(xhr.responseText);
-            document.getElementById('message').innerText = data.message;
+            document.getElementById('message').innerText = `Entry number: ${data.totalEntries}\nWord: ${word}\nDefinition: ${definition}`;
         } else {
             console.error('Request failed');
         }

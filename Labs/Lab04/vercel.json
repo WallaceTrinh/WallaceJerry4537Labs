@@ -2,18 +2,18 @@
   "version": 2,
   "builds": [
     {
-      "src": "./server2/app.js",
+      "src": "/Labs/Lab04/server2/app.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/api/definitions/(.*)",
-      "dest": "./server2/app.js"
+      "dest": "/Labs/Lab04/server2/app.js"
     },
     {
       "src": "/(.*)",
-      "dest": "./server1/$1"
+      "dest": "/Labs/Lab04/server1/$1"
     }
   ]
 }

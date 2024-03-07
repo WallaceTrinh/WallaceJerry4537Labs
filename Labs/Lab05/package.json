@@ -1,0 +1,12 @@
+{
+    "name": "wallace-jerry4537-labs-lab05",
+    "version": "1.0.0",
+    "main": "server2PLACEHOLDER/app.js",
+    "scripts": {
+      "start": "node server2PLACEHOLDER/app.js"
+    },
+    "engines": {
+      "node": "18.x"
+    }
+  }
+  

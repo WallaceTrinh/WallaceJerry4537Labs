@@ -1,12 +1,13 @@
 {
-    "name": "wallace-jerry4537-labs-lab05",
-    "version": "1.0.0",
-    "main": "server2PLACEHOLDER/app.js",
-    "scripts": {
-      "start": "node server2PLACEHOLDER/app.js"
-    },
-    "engines": {
-      "node": "18.x"
-    }
+  "name": "wallace-jerry4537-labs-lab05",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "echo 'No start script required for this Vercel deployments'"
+  },
+  "dependencies": {
+    "mysql": "^2.18.1"
+  },
+  "engines": {
+    "node": "18.x"
   }
-  
+}

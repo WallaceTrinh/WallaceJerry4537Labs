@@ -1,8 +1,14 @@
 
+// Need to create a insertPresetRows() function
+// Client SQL stuff here
+// Client SQL stuff here
+// Client SQL stuff here
 
-// Client SQL stuff here
-// Client SQL stuff here
-// Client SQL stuff here
+
+
+
+
+// Need to create a submitQuery() function
 // Client SQL stuff here
 // Client SQL stuff here
 // Client SQL stuff here

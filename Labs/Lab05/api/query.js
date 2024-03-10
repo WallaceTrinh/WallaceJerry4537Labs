@@ -10,7 +10,9 @@ const connection = mysql.createConnection({
 
 module.exports = (req, res) => {
   if (req.method === 'GET') {
+    console.log('Received GET request for querying.');
     const query = req.query.query;
+    console.log('Query:', query);
 
     // Validate that it's a SELECT query
     if (!query.toLowerCase().startsWith('select')) {
@@ -24,10 +26,10 @@ module.exports = (req, res) => {
       if (err) {
         console.error('Error executing query:', err);
         res.statusCode = 500;
-        res.end('Error executing query');
+        res.end('Error executing query: ' + err.message);
         return;
       }
-
+      console.log('Query executed successfully:', results);
       // No errors, it works
       res.statusCode = 200;
       res.setHeader('Content-Type', 'application/json');
@@ -35,6 +37,7 @@ module.exports = (req, res) => {
     });
   } else {
     // Method is not allowed
+    console.log('Invalid method for query endpoint');
     res.statusCode = 405;
     res.end();
   }

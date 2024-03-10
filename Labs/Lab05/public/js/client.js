@@ -56,23 +56,24 @@ function submitQuery(){
     } else{
         console.log("We only accept insert and select queries");
     }
+    
+    xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(query));
 
     // xhr.open('POST', 'https://wallace-jerry4537-lab05-sql.vercel.app/', true);
-    // xhr.setRequestHeader('Content-Type', 'application/json');
 
-    // xhr.onload = function() {
-    //     if (xhr.status >= 200 && xhr.status < 400) {
-    //         var data = JSON.parse(xhr.responseText);
-    //         document.getElementById('message').innerText = `Entry number: ${data.totalEntries}\nWord: ${word}\nDefinition: ${definition}`;
-    //     } else {
-    //         console.error('Request failed');
-    //     }
-    // };
+    xhr.onload = function() {
+        if (xhr.status >= 200 && xhr.status < 400) {
+            var data = JSON.parse(xhr.responseText);
+            document.getElementById('results').innerText = `${data}`;
+        } else {
+            console.error('Request failed');
+        }
+    };
 
-    // xhr.onerror = function() {
-    //     console.error('Request error');
-    // };
+    xhr.onerror = function() {
+        console.error('Request error');
+    };
 
 
     // xhr.send(JSON.stringify(defaultInsert));

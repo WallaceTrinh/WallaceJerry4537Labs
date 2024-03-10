@@ -38,11 +38,11 @@ module.exports = (req, res) => {
         }
 
         // Prepares the insertion query
-        const insertQuery = 'INSERT INTO patients (name, dateOfBirth) VALUES ?';
-        const values = data.map(patient => [patient.name, patient.dateOfBirth]);
+        // const insertQuery = 'INSERT INTO patients (name, dateOfBirth) VALUES ?';
+        // const values = data.map(patient => [patient.name, patient.dateOfBirth]);
 
         // Executes the insertion query
-        connection.query(insertQuery, [values], (err, result) => {
+        connection.query(data, (err, result) => {
           if (err) {
             console.error('Error inserting data:', err);
             res.statusCode = 500;

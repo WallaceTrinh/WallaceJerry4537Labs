@@ -33,12 +33,12 @@ module.exports = (req, res) => {
 
         // SQL query to create table if not exists
         const createTableQuery = `
-          CREATE TABLE IF NOT EXISTS patients (
-            patientid INT AUTO_INCREMENT PRIMARY KEY,
-            name VARCHAR(100),
-            dateOfBirth DATE
-          ) ENGINE=InnoDB;
-        `;
+        CREATE TABLE IF NOT EXISTS patients (
+          patientid INT(11) AUTO_INCREMENT PRIMARY KEY,
+          name VARCHAR(100),
+          dateOfBirth DATETIME
+        ) ENGINE=InnoDB;
+      `;
 
         // Execute SQL query to create the table
         connection.query(createTableQuery, err => {

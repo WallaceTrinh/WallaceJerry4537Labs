@@ -1,9 +1,9 @@
 {
   "name": "wallace-jerry4537-labs-lab05",
   "version": "1.0.0",
-  "main": "server2/server.js",
+  "main": "server2/app.js",
   "scripts": {
-    "start": "node server2/server.js"
+    "start": "node server2/app.js"
   },
   "engines": {
     "node": "18.x"

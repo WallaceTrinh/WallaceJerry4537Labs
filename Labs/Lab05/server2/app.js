@@ -1,6 +1,9 @@
 const http = require('http');
 const mysql = require('mysql');
+const cors = require('cors');
 const url = require('url');
+
+app.use(cors());
 
 // Create a MySQL connection
 const connection = mysql.createConnection({

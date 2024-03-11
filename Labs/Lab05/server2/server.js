@@ -4,7 +4,7 @@ const url = require('url');
 
 // Create a MySQL connection
 const connection = mysql.createConnection({
-  host: '127.0.0.1',
+  host: 'http://165.232.148.200',
   user: 'WallaceJerry',
   password: 'COMP4537WJ',
   database: 'lab05database'

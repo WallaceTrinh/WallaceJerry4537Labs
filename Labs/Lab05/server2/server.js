@@ -32,7 +32,7 @@ const server = http.createServer((req, res) => {
 
   if (req.method === 'OPTIONS') {
     res.statusCode = 204;
-    res.end("test");
+    res.end();
     return;
   } else{
     res.setHeader('Content-Type', 'application/json')
@@ -58,6 +58,8 @@ const server = http.createServer((req, res) => {
           ) ENGINE=InnoDB;
         `;
 
+        console.log("start of create table query");
+
         connection.query(createTableQuery, err => {
           if (err) {
             console.error('Error creating table:', err);
@@ -66,6 +68,7 @@ const server = http.createServer((req, res) => {
             res.end(JSON.stringify({ error: 'Error creating table' }));
             return;
           }
+          console.log("createtablequery ok");
           connection.query(insertQuery, [values], (err, result) => {
             if (err) {
               console.error('Error inserting data:', err);
@@ -74,6 +77,8 @@ const server = http.createServer((req, res) => {
               res.end(JSON.stringify({ error: 'Error inserting data' }));
               return;
             }
+            console.log("insertquery ok");
+
             // res.writeHead(200, { 'Content-Type': 'application/json' });
             res.statusCode = 200;
             res.end(JSON.stringify({ message: 'Data inserted successfully', result }));

@@ -1,0 +1,14 @@
+{
+  "name": "wallace-jerry4537-labs-lab05",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "echo 'No start script required for this Vercel deployments'",
+    "build": "echo \"No build step required\""
+  },
+  "dependencies": {
+    "mysql": "^2.18.1"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}

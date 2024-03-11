@@ -51,6 +51,7 @@ const server = http.createServer((req, res) => {
         // const values = patients.map(patient => [patient.name, patient.dateOfBirth]);
 
         const query = JSON.parse(body);
+        console.log(query);
         const createTableQuery = `
           CREATE TABLE IF NOT EXISTS patients (
             patientid INT(11) AUTO_INCREMENT PRIMARY KEY,

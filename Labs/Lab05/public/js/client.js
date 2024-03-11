@@ -34,7 +34,7 @@ function insertPresetRows(){
     let query = `INSERT INTO patients (name, dateOfBirth) VALUES ${defaultInsert}`
 
     console.log(JSON.stringify(query));
-    xhr.send(JSON.stringify(defaultInsert));
+    xhr.send(JSON.stringify(query));
 }
 
 // Function for the Submit Query

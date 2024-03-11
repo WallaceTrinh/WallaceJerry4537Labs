@@ -46,10 +46,11 @@ const server = http.createServer((req, res) => {
     });
     req.on('end', () => {
       try {
-        const patients = JSON.parse(body);
-        const insertQuery = 'INSERT INTO patients (name, dateOfBirth) VALUES ?';
-        const values = patients.map(patient => [patient.name, patient.dateOfBirth]);
+        // const patients = JSON.parse(body);
+        // const insertQuery = 'INSERT INTO patients (name, dateOfBirth) VALUES ?';
+        // const values = patients.map(patient => [patient.name, patient.dateOfBirth]);
 
+        const query = JSON.parse(body);
         const createTableQuery = `
           CREATE TABLE IF NOT EXISTS patients (
             patientid INT(11) AUTO_INCREMENT PRIMARY KEY,
@@ -69,7 +70,7 @@ const server = http.createServer((req, res) => {
             return;
           }
           console.log("createtablequery ok");
-          connection.query(insertQuery, [values], (err, result) => {
+          connection.query(query, (err, result) => {
             if (err) {
               console.error('Error inserting data:', err);
               // res.writeHead(500, { 'Content-Type': 'application/json' });

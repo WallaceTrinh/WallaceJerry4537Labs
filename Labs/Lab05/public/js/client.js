@@ -18,15 +18,23 @@ function insertPresetRows(){
         }
     };
 
-    let patients = [
-        { name: "Sara Brown", dateOfBirth: "1901-01-01" },
-        { name: "John Smith", dateOfBirth: "1941-01-01" },
-        { name: "Jack Ma", dateOfBirth: "1961-01-30" },
-        { name: "Elon Musk", dateOfBirth: "1999-01-01" }
-        // '("Sara Brown", "1901-01-01"), ("John Smith", "1941-01-01"), ("Jack Ma", "1961-01-30"), ("Elon Musk", "1999-01-01")'
-    ];
+    // let patients = [
+    //     { name: "Sara Brown", dateOfBirth: "1901-01-01" },
+    //     { name: "John Smith", dateOfBirth: "1941-01-01" },
+    //     { name: "Jack Ma", dateOfBirth: "1961-01-30" },
+    //     { name: "Elon Musk", dateOfBirth: "1999-01-01" }
+    //     // '("Sara Brown", "1901-01-01"), ("John Smith", "1941-01-01"), ("Jack Ma", "1961-01-30"), ("Elon Musk", "1999-01-01")'
+    // ];
 
-    xhr.send(JSON.stringify(patients));
+    // xhr.send(JSON.stringify(patients));
+
+    let defaultInsert = '("Sara Brown", "1901-01-01"), ("John Smith", "1941-01-01"), ("Jack Ma", "1961-01-30"), ("Elon Musk", "1999-01-01");'
+
+    console.log(defaultInsert);
+    let query = `INSERT INTO patients (name, dateOfBirth) VALUES ${defaultInsert}`
+
+    console.log(JSON.stringify(query));
+    xhr.send(JSON.stringify(defaultInsert));
 }
 
 // Function for the Submit Query

@@ -4,10 +4,10 @@ const url = require('url');
 
 // Create a MySQL connection
 const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE
+  host: 'localhost',
+  user: 'WallaceJerry',
+  password: 'COMP4537WJ',
+  database: 'lab05database'
 });
 
 // Connect to MySQL
@@ -28,11 +28,14 @@ const server = http.createServer((req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+
   if (req.method === 'OPTIONS') {
-    res.writeHead(204);
-    res.end();
+    res.statusCode = 204;
+    res.end("test");
     return;
+  } else{
+    res.setHeader('Content-Type', 'application/json')
   }
   
   if (path === '/api/insert' && req.method === 'POST') {
@@ -58,24 +61,28 @@ const server = http.createServer((req, res) => {
         connection.query(createTableQuery, err => {
           if (err) {
             console.error('Error creating table:', err);
-            res.writeHead(500, { 'Content-Type': 'application/json' });
+            // res.writeHead(500, { 'Content-Type': 'application/json' });
+            res.statusCode = 500;
             res.end(JSON.stringify({ error: 'Error creating table' }));
             return;
           }
           connection.query(insertQuery, [values], (err, result) => {
             if (err) {
               console.error('Error inserting data:', err);
-              res.writeHead(500, { 'Content-Type': 'application/json' });
+              // res.writeHead(500, { 'Content-Type': 'application/json' });
+              res.statusCode = 500
               res.end(JSON.stringify({ error: 'Error inserting data' }));
               return;
             }
-            res.writeHead(200, { 'Content-Type': 'application/json' });
+            // res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.statusCode = 200;
             res.end(JSON.stringify({ message: 'Data inserted successfully', result }));
           });
         });
       } catch (error) {
         console.error('Error parsing JSON:', error);
-        res.writeHead(400, { 'Content-Type': 'application/json' });
+        // res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.statusCode = 400;
         res.end(JSON.stringify({ error: 'Error parsing JSON' }));
       }
     });
@@ -84,7 +91,8 @@ const server = http.createServer((req, res) => {
     const query = parsedUrl.query.query;
     
     if (!query.toLowerCase().startsWith('select')) {
-      res.writeHead(400, { 'Content-Type': 'application/json' });
+      // res.writeHead(400, { 'Content-Type': 'application/json' });
+      res.statusCode = 400;
       res.end(JSON.stringify({ error: 'Only SELECT queries are allowed' }));
       return;
     }
@@ -92,16 +100,19 @@ const server = http.createServer((req, res) => {
     connection.query(query, (err, results) => {
       if (err) {
         console.error('Error executing query:', err);
-        res.writeHead(500, { 'Content-Type': 'application/json' });
+        // res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.statusCode = 500;
         res.end(JSON.stringify({ error: 'Error executing query' }));
         return;
       }
-      res.writeHead(200, { 'Content-Type': 'application/json' });
+      // res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.statusCode = 200;
       res.end(JSON.stringify(results));
     });
   } else {
     // Handle incorrect endpoint or method
-    res.writeHead(404, { 'Content-Type': 'text/plain' });
+    // res.writeHead(404, { 'Content-Type': 'text/plain' });
+    res.statusCode = 404;
     res.end('Not Found');
   }
 });

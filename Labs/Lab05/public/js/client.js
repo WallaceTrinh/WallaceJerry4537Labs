@@ -61,7 +61,7 @@ function submitQuery(){
       
 
     if (method === 'POST') {
-        xhr.send(JSON.stringify({ query: query }));
+        xhr.send(JSON.stringify(query));
     } else {
         xhr.send();
     }

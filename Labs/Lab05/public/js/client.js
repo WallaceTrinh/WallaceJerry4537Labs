@@ -5,7 +5,7 @@ function insertPresetRows(){
     xhr.open('POST', 'https://wallace-jerry4537-lab05-sql.vercel.app/api/insert', true);
     // xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload = function() {
-        // if (xhr.readyState === 4) {
+        if (xhr.readyState === 4) {
             var resultsElement = document.getElementById('results');
             if (xhr.status >= 200 && xhr.status < 400) {
                 var response = JSON.parse(xhr.responseText);
@@ -15,7 +15,7 @@ function insertPresetRows(){
                 console.error('Insert failed:', xhr.responseText);
                 resultsElement.textContent = 'Insert Failed: ' + xhr.responseText;
             }
-        // }
+        }
     };
 
     // let patients = [

@@ -2,7 +2,7 @@
 function insertPresetRows(){
     var xhr = new XMLHttpRequest();
     // xhr.open('POST', 'https://wallace-jerry4537-lab05-sql.vercel.app/', true);
-    xhr.open('POST', 'https://wallace-jerry4537-lab05-sql.vercel.app/api/insert', true);
+    xhr.open('POST', 'https://wallace-jerry4537-labs.vercel.app/api/insert', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) {

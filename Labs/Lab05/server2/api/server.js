@@ -46,10 +46,6 @@ const server = http.createServer((req, res) => {
     });
     req.on('end', () => {
       try {
-        // const patients = JSON.parse(body);
-        // const insertQuery = 'INSERT INTO patients (name, dateOfBirth) VALUES ?';
-        // const values = patients.map(patient => [patient.name, patient.dateOfBirth]);
-
         const query = JSON.parse(body);
         console.log(query);
         const createTableQuery = `
